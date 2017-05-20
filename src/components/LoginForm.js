@@ -8,7 +8,9 @@ class LoginForm extends Component {
 
   onButtonPress (){
     const { email, password } = this.state;
+
     this.setState({ error: '', loading: true });
+
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(this.onLoginSuccess.bind(this))
       .catch(() => {
@@ -18,16 +20,16 @@ class LoginForm extends Component {
       });
   }
 
-  onLoginSuccess(){
+  onLoginSuccess() {
     this.setState({
       email: '',
       password: '',
-      error: '',
-      loading: false
+      loading: false,
+      error: ''
     });
   }
 
-  onLoginFail(){
+  onLoginFail() {
     this.setState({
       error: 'Authentication Failed',
       loading: false
@@ -58,6 +60,7 @@ class LoginForm extends Component {
             secureTextEntry={false}
           />
         </CardSection>
+
         <CardSection>
           <Input
             label="Password"
